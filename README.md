@@ -1,24 +1,50 @@
-# SimpleCalculator-CLI-Python
-A Python-based command-line calculator that performs basic arithmetic operations based on user input. ➕➖✖️➗
-# ✅ Project Title (e.g., To-Do Manager GUI)
+# ✨ Simple Calculator with Modular Functions and Error Handling
 
-## 🧠 Description
-Brief overview of what your app does and why it's useful.
+def add(a, b):
+    return a + b
 
-## 💻 Tech Stack
-Python · Tkinter · CSV · Matplotlib (if used)
+def subtract(a, b):
+    return a - b
 
-## 🔧 Features
-- Add/edit/delete tasks
-- Task status tracking
-- Save/load data from file
+def multiply(a, b):
+    return a * b
 
-## 🚀 Getting Started
-1. Clone the repo
-2. Run `main.py` using Python 3
+def divide(a, b):
+    if b == 0:
+        return "❌ Error: Cannot divide by zero!"
+    return a / b
 
-## 📂 File Structure
-Mention how files are organized
+def calculator():
+    print("\n🔢 Welcome to the Simple Calculator!")
+    print("Operations Available:")
+    print("  + : Addition")
+    print("  - : Subtraction")
+    print("  * : Multiplication")
+    print("  / : Division")
 
-## 🙋‍♀️ Author
-Built by Khushi ✨
+    operation = input("Enter operation (+, -, *, /): ")
+
+    if operation not in ['+', '-', '*', '/']:
+        print("❌ Invalid operation. Please choose from +, -, *, /.")
+        return
+
+    try:
+        num1 = float(input("Enter the first number: "))
+        num2 = float(input("Enter the second number: "))
+
+        operation_func = {
+            '+': add,
+            '-': subtract,
+            '*': multiply,
+            '/': divide
+        }
+
+        result = operation_func[operation](num1, num2)
+        print(f"✅ Result: {result}")
+
+    except ValueError:
+        print("❌ Error: Please enter valid numeric values.")
+
+# Run the calculator
+if __name__ == "__main__":
+    calculator()
